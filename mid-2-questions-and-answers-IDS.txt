@@ -1,0 +1,747 @@
+Q1.If a matrix has a determinant of zero, what does that imply?
+
+Ans:
+
+If a matrix has a determinant of zero, it implies that the matrix is singular. This means:
+
+No Inverse: The matrix does not have an inverse.
+Dependent Rows/Columns: The rows or columns of the matrix are linearly dependent, meaning one row or column can be expressed as a combination of others.
+Zero Volume Transformation: Geometrically, the matrix represents a transformation that collapses the space into a lower dimension, resulting in zero volume.
+
+This concept is fundamental in linear algebra and is often used to determine whether a system of linear equations has a unique solution.
+
+==============================================================================================
+
+Q2. What is One-Hot Encoding, and when is it used?
+
+one-hot encoding:
+-----------------
+
+One-hot encoding transforms the categorical column into labels and splits the column into multiple columns.
+The numbers are replaced by binary values such as 1s or 0s.
+•
+One-hot encoding can also be performed using the get_dummies() function.
+# Read the data
+data=pd.read_csv('employee.csv')
+# Dummy encoding
+encoded_data = pd.get_dummies(data['gender'])
+# Join the encoded _data with original dataframe
+data = data.join(encoded_data)
+
+=====================================================================
+
+
+Q3. How does Boolean Indexing work in NumPy?
+
+Ans:
+
+Boolean and fancy indexing
+•
+Indexing techniques help us to select and filter elements from a NumPy array.
+•
+Boolean indexing uses a Boolean expression in the place of indexes (in square brackets) to filter the NumPy array. 
+This indexing returns elements that have a true value for the Boolean expression:
+# Create NumPy Array
+arr = np.arange(21,41,2)
+print("Orignial Array:\n",arr)
+# Boolean Indexing
+print("After Boolean Condition:",arr[arr>30])
+Output:
+Orignial Array: [21 23 25 27 29 31 33 35 37 39]
+After Boolean Condition: [31 33 35 37 39]
+
+
+===============================================================
+
+Q4.Why is PCA used for dimensionality reduction in large datasets?
+
+Ans:
+
+PCA is an unsupervised learning algorithm that is commonly used by data scientists for data preprocessing. 
+It transforms a large data set into a lower dimensional space, extracting the most informative features while preserving the most relevant information 
+from the initial data set. This data preprocessing reduces model complexity as the addition of each new feature negatively impacts model performance, 
+which is also commonly referred to as the “curse of dimensionality.”
+
+Dimensionality reduction techniques such as PCA, LDA and t-SNE enhance machine learning models. They preserve essential features of complex data sets 
+by reducing the number predictor variables for increased generalizability.
+
+Dimensionality reduction is a method for representing a given dataset using a lower number of features (that is, dimensions) while still capturing 
+the original data’s meaningful properties.1 This amounts to removing irrelevant or redundant features, or simply noisy data, to create a model with 
+a lower number of variables. Dimensionality reduction covers an array of feature selection and data compression methods used during preprocessing. 
+While dimensionality reduction methods differ in operation, they all transform high-dimensional spaces into low-dimensional spaces through variable
+extraction or combination.
+
+
+
+==================================================================
+
+Q5. What is Broadcasting in NumPy, and why is it useful?
+
+Ans:
+
+Broadcasting arrays
+•
+Python lists do not support direct vectorizing arithmetic operations.
+•
+NumPy offers a faster vectorized array operation compared to Python list loop-based operations.
+•
+Broadcasting functionality checks a set of rules for applying binary functions, such as addition, subtraction, and multiplication, 
+on different shapes of an array.
+
+# Create NumPy Array
+arr1 = np.arange(1,5).reshape(2,2)
+print(arr1)
+Output:
+[[1 2]
+[3 4]]
+
+# Create another NumPy Array
+arr2 = np.arange(5,9).reshape(2,2)
+print(arr2)
+Output:
+[[5 6]
+[7 8]]
+
+# Add two matrices
+print(arr1+arr2)
+Output: [[ 6 8]
+[10 12]]
+In all three preceding examples, we can see the addition of two arrays of the same size. This concept is known as broadcasting:
+
+# Multiply two matrices
+print(arr1*arr2)
+Output: [[ 5 12]
+[21 32]]
+
+# Add a scaler value
+print(arr1 + 3)
+Output: [[4 5]
+[6 7]]
+
+# Multiply with a scalar value
+print(arr1 * 3)
+Output:
+[[ 3 6]
+[ 9 12]]
+
+
+================================================================================================
+
+Q6. What is the difference between Univariate, Bivariate, and Multivariate Analysis?
+
+
+Types of analysis
+
+Univariate Analysis:
+
+•This type of analysis examines a single variable at a time.
+•Its purpose is to describe the distribution of the variable, identify central tendencies (mean, median, mode), and understand its spread (variance, standard deviation, range).
+Examples:
+•Analyzing the distribution of passenger ages on the Titanic.
+•Examining the frequency of different passenger classes.
+
+Bivariate Analysis:
+
+•This type of analysis explores the relationship between two variables.
+•It aims to determine whether there is an association between the variables and, if so, to quantify the strength and direction of that association.
+Examples:
+•Investigating the relationship between passenger age and fare paid.
+•Examining the correlation between passenger class and survival rate.
+
+Multivariate Analysis:
+
+•This type of analysis examines the relationships among three or more variables simultaneously.
+•It allows for a more comprehensive understanding of complex interactions and dependencies.
+Examples:
+•Modeling survival rate as a function of passenger class, sex, and age.
+•Analyzing the combined effects of multiple factors on fare paid.
+
+=================================================================================================
+Q7. What is a Hypothesis Test, and why is it used in data science?
+
+
+Hypothesis testing is a statistical method used to evaluate claims about populations based on sample data.
+
+Hypothesis testing is a statistical procedure used to test assumptions or hypotheses about a population parameter. It involves 
+formulating a null hypothesis (H0) and an alternative hypothesis (Ha), collecting data, and determining whether the evidence is strong enough 
+to reject the null hypothesis.
+
+The primary purpose of hypothesis testing is to make inferences about a population based on a sample of data. 
+It allows researchers and analysts to quantify the likelihood that observed differences or relationships in the data occurred by chance 
+rather than reflecting a true effect in the population.
+
+==========================================================================
+Q8. What is Multicollinearity, and how can it be detected?
+
+Understanding multicollinearity
+•Multicollinearity represents the very high intercorrelations or inter-association among the independent(or predictor)variables.
+•Multicollinearity take splace when independent variables of multiple regression analysis are highly associated with each other.
+This association is caused by a highcorrelation among independent variables.
+•This high correlation will trigger a problem in the linear regression model prediction results.
+•It's the basic assumption of linear regression analysis to a void multicollinearity for better results:
+1.It occurs due to the inappropriate use of dummy variables.
+2.It also occurs due to the repetition of similar variables.
+3.It is also caused due to synthesized variables fromo ther variables in the data.
+4.It can occur due to high correlation among variables.
+
+•Multicollinearity causes thefollowing problems:
+1.It causes difficulty in estimating the regression coefficients precisely and
+2.coefficients become more susceptible to minor variations in the model.
+3.It can also cause a change in the signs and magnitudes of the coefficient.
+4.It causes difficulty in assessing the relative importance of independent variables.
+
+removing multicollinearity
+Multicollinearity can be detected using the following:
+•The correlation coefficient (or correlation matrix) between independent variables
+•Variance Inflation Factor (VIF)
+•Eigenvalues
+•Correlation coefficients or correlation matrices will help us to identify a high correlation between independent variables.
+•Using the correlation coefficient, we can easily detect the multicollinearity by checking the correlation coefficient magnitude
+
+==============================================================================
+Q.9 Why is Feature Encoding important in Machine Learning?
+
+
+Feature encoding techniques
+•Machine learning models are mathematical models that required numeric and integer values for computation.
+•Such models can't work on categorical features. That's why we often need to convert categorical features into numerical ones.
+•Machine learning model performance is affected by what encoding technique we use. Categorical values range from 0 to N-1 categories.
+
+
+==============================================================================
+Q.10 If the Silhouette Score of a clustering model is close to 1, what does it indicate?
+
+Clusters are collections of similar data
+Clustering is a type of unsupervised learning
+The Correlation Coefficient describes the strength of a relationship.
+
+Clusters are collections of data based on similarity.
+
+Data points clustered together in a graph can often be classified into clusters.
+
+In the graph below we can distinguish 3 different clusters:
+
+Identifying Clusters
+Clusters can hold a lot of valuable information, but clusters come in all sorts of shapes, so how can we recognize them?
+
+The two main methods are:
+
+Using Visualization
+Using an Clustering Algorithm
+
+Clustering
+Clustering is a type of Unsupervised Learning.
+
+Clustering is trying to:
+
+Collect similar data in groups
+Collect dissimilar data in other groups
+
+Clustering Methods
+Density Method
+Hierarchical Method
+Partitioning Method
+Grid-based Method
+
+
+=================================================================================================
+LQ1. Describe the concept of matrix decomposition using Singular Value Decomposition (SVD).
+
+ANS:
+----
+
+Decomposing a matrix using svd
+•
+Matrix decomposition is the process of splitting a matrix into parts. It is also known as matrix factorization.
+•
+There are lots of matrix decomposition methods available such as
+1.lower-upper (LU) decomposition
+2.QR decomposition (where Q is orthogonal and R is upper-triangular)
+3.Cholesky decomposition, and
+4.SVD.
+•Eigenanalysis decomposes a matrix into vectors and values.
+•SVD decomposes a matrix into the following parts: singular vectors and singular values.
+•SVD is widely used in signal processing, computer vision, natural language processing (NLP), and machine learning—for example, 
+topic modeling and recommender systems where SVD is widely accepted and implemented in real-life business solutions.
+
+A = UEVT
+
+Here, A is a m x n left singular matrix, Σ is a n x n diagonal matrix, V is a m x n right singular matrix, and VT is
+the transpose of the V. The numpy.linalg subpackage offers the svd() function to decompose a matrix.
+
+# import required libraries
+import numpy as np
+from scipy.linalg import svd
+# Create a matrix
+mat=np.array([[5, 3, 1],[5, 3, 0],[1, 0, 5]])
+# Perform matrix decomposition using SVD
+U, Sigma, V_transpose = svd(mat)
+print("Left Singular Matrix:",U)
+print("Diagonal Matrix: ", Sigma)
+print("Right Singular Matrix:", V_transpose)
+
+Output:
+Left Singular Matrix: [[-0.70097269 -0.06420281 -0.7102924 ]
+[-0.6748668 -0.26235919 0.68972636]
+[-0.23063411 0.9628321 0.14057828]]
+Diagonal Matrix: [8.42757145 4.89599358 0.07270729]
+Right Singular Matrix: [[-0.84363943 -0.48976369 -0.2200092]
+[-0.13684207 -0.20009952 0.97017237]
+[ 0.51917893 -0.84858218 -0.10179157]]
+
+
+=========================================================================
+LQ2. Describe different methods of reshaping NumPy arrays. How does array broadcasting work?
+
+
+Manipulating array shapes
+•Let's learn some new Python functions of NumPy, such as reshape(), flatten(), ravel(), transpose(), and resize():
+•reshape() will change the shape of the array:
+# Create an array
+arr = np.arange(12)
+print(arr)
+Output: [ 0 1 2 3 4 5 6 7 8 9 10 11]
+# Reshape the array dimension
+new_arr=arr.reshape(4,3)
+print(new_arr)
+Output: [[ 0, 1, 2],
+[ 3, 4, 5],
+[ 6, 7, 8],
+[ 9, 10, 11]]
+
+
+# Reshape the array dimension
+new_arr2=arr.reshape(3,4)
+print(new_arr2)
+Output:
+array([[ 0, 1, 2, 3],
+[ 4, 5, 6, 7],
+[ 8, 9, 10, 11]])
+
+
+•flatten() transforms an n-dimensional array into a one-dimensional array:
+# Create an array
+arr=np.arange(1,10).reshape(3,3)
+print(arr)
+Output:
+[[1 2 3]
+[4 5 6]
+[7 8 9]]
+print(arr.flatten())
+Output:
+[1 2 3 4 5 6 7 8 9]
+
+
+•The ravel() function is similar to the flatten() function. It also transforms an n-dimensional array into a one-dimensional array.
+The main difference is that flatten() returns the actual array while ravel() returns the reference of the
+original array.
+The ravel() function is faster than the flatten() function
+because it does not occupy extra memory:
+print(arr.ravel())
+Output:
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+•The transpose() function is a linear algebraic function that transposes the given two-dimensional matrix. 
+The word transpose means converting rows into columns and columns into rows:
+# Transpose the matrix
+print(arr.transpose())
+Output:
+[[1 4 7]
+[2 5 8]
+[3 6 9]]
+
+•The resize() function changes the size of the NumPy array. It is similar to reshape() but it changes the shape of the original array:
+# resize the matrix
+arr.resize(1,9)
+print(arr)
+Output:[[1 2 3 4 5 6 7 8 9]]
+
+
+Broadcasting arrays
+•Python lists do not support direct vectorizing arithmetic operations.
+•NumPy offers a faster vectorized array operation compared to Python list loop-based operations.
+•Broadcasting functionality checks a set of rules for applying binary functions, such as addition, subtraction, and multiplication, 
+on different shapes of an array.
+# Create NumPy Array
+arr1 = np.arange(1,5).reshape(2,2)
+print(arr1)
+Output:
+[[1 2]
+[3 4]]
+# Create another NumPy Array
+arr2 = np.arange(5,9).reshape(2,2)
+print(arr2)
+Output:
+[[5 6]
+[7 8]]
+
+
+# Add two matrices
+print(arr1+arr2)
+Output: [[ 6 8]
+[10 12]]
+
+
+In all three preceding examples, we can see the addition of two arrays of the same size. This concept is known as broadcasting:
+
+# Multiply two matrices
+print(arr1*arr2)
+Output: [[ 5 12]
+[21 32]]
+
+# Add a scaler value
+print(arr1 + 3)
+Output: [[4 5]
+[6 7]]
+
+# Multiply with a scalar value
+print(arr1 * 3)
+Output:
+[[ 3 6]
+[ 9 12]]
+
+========================================================================
+LQ3.  What are the different indexing techniques available in NumPy? Explain with examples
+
+Indexing prefers to select a single value
+
+Boolean and fancy indexing
+•Indexing techniques help us to select and filter elements from a NumPy array.
+•Boolean indexing uses a Boolean expression in the place of indexes (in square brackets) to filter the NumPy array. This indexing returns elements 
+that have a true value for the Boolean expression:
+# Create NumPy Array
+arr = np.arange(21,41,2)
+print("Orignial Array:\n",arr)
+# Boolean Indexing
+print("After Boolean Condition:",arr[arr>30])
+Output:
+Orignial Array: [21 23 25 27 29 31 33 35 37 39]
+After Boolean Condition: [31 33 35 37 39]
+
+•Fancy indexing is a special type of indexing in which elements of an array are selected by an array of indices.
+•This means we pass the array of indices in brackets.
+•Fancy indexing also supports multi-dimensional arrays.
+•This will help us to easily select and modify a complex multi-dimensional set of arrays.
+# Create NumPy Array
+arr = np.arange(1,21).reshape(5,4)
+print("Orignial Array:\n",arr)
+# Selecting 2nd and 3rd row
+indices = [1,2]
+print("Selected 1st and 2nd Row:\n", arr[indices])
+# Selecting 3nd and 4th row
+indices = [2,3]
+print("Selected 3rd and 4th Row:\n", arr[indices])
+
+Output:
+Orignial Array: [[ 1 2 3 4]
+[ 5 6 7 8]
+[ 9 10 11 12]
+[13 14 15 16]
+[17 18 19 20]]
+Selected 1st and 2nd Row:
+[[ 5 6 7 8]
+[ 9 10 11 12]]
+Selected 3rd and 4th Row:
+[[ 9 10 11 12]
+[13 14 15 16]]
+
+
+
+
+
+========================================================================
+
+LQ4. How is outlier detection performed? Explain different techniques for handling outliers in data.
+
+Handling outliers
+•Outliers are those data points that are distant from most of the similar points.
+•Outliers cause problems when it comes to building predictive models, such as long model training times, poor accuracy, an increase in error variance, 
+a decrease in normality, and a reduction in the power of statistical tests.
+•There are two types of outliers: univariate and multivariate.
+•Univariate outliers can be found in single variable distributions, while multivariates can be found in n-dimensional spaces.
+•We can detect and handle outliers in the following ways:
+Box Plot: We can use a box plot to create a bunch of data points through quartiles. It groups the data points between the first and third quartile 
+into a rectangular box. The box plot also displays the outliers as individual points using the interquartile range.
+Scatter Plot: A scatter plot displays the points (or two variables) on the two dimensional chart. One variable is placed on the x-axis, 
+while the other is placed on the y-axis.
+
+Z-Score: The Z-score is a kind of parametric approach to detecting outliers. It assumes a normal
+distribution of the data. The outlier lies in the tail of the normal curve distribution and is far from the
+mean:
+z = x-U
+    
+Interquartile Range (IQR): IQR is a robust statistical measure of data dispersion. It is the difference
+between the third and first quartile. These quartiles can be visualized in a box plot. This is also known
+as the midspread, the middle 50%, or H-spread:
+
+IQR = Q3 - Q1
+
+Percentile: A percentile is a statistical measure that divides data into 100 groups of equal size. Its
+value indicates the percentage of the population below that value. For example, the 95th percentile
+means 95% of people fall under this category.
+==========================================================================
+LQ5.Explain Eigenvalues and Eigenvectors. How are they useful in data science applications?
+
+Eigenvectors and Eigenvalues using NumPy
+•Eigenvectors and Eigenvalues are the tools required to understand linear mapping and transformation.
+•Eigenvalues are solutions to the equation Ax = λx.
+Here, A is the square matrix, x is the eigenvector, and λ is eigenvalues.
+•The numpy.linalg subpackage provides two functions, eig() and eigvals().
+•The eig() function returns a tuple of eigenvalues and eigenvectors, and eigvals() returns the eigenvalues.
+•Eigenvectors and eigenvalues are the core fundamentals of linear algebra. Eigenvectors and eigenvalues are used in SVD, spectral clustering, and PCA.
+
+
+•
+Create the matrix using the NumPy mat() function:
+# Import numpy
+import numpy as np
+# Create matrix using NumPy
+mat=np.mat([[2,4],[5,7]])
+print("Matrix:\n",mat)
+This results in the following output:
+Matrix: [[2 4]
+[5 7]]
+
+Compute eigenvectors and eigenvalues using the eig() function, like this:
+
+# Calculate the eigenvalues and eigenvectors
+eigenvalues, eigenvectors = np.linalg.eig(mat)
+print("Eigenvalues:", eigenvalues)
+print("Eigenvectors:", eigenvectors)
+This results in the following output:
+Eigenvalues: [-0.62347538 9.62347538]
+Eigenvectors: [[-0.83619408 -0.46462222]
+[ 0.54843365 -0.885509 ]]
+
+
+Compute eigenvalues using the eigvals() function, like this:
+# Compute eigenvalues
+eigenvalues= np.linalg.eigvals(mat)
+print("Eigenvalues:", eigenvalues)
+This results in the following output:
+Eigenvalues: [-0.62347538 9.62347538]
+
+
+==========================================================================
+LQ6.  What is the importance of exploratory data analysis (EDA) before applying machine learning models?
+
+Exploring data
+•We will explore data by performing Exploratory DataAnalysis(EDA).
+•EDA is the mostcritical and mostimportant component of the data analysis process.
+•EDA offers the following benefits:
+1.It provides an initial glimpse of data and its context.
+
+2.It captures quick insights and identifies the potential drivers from the data for predictive analysis.
+It finds the queries and questions that can be answered for decision-making purposes.
+
+3.It assesses the quality of the data and helps us build the roadmap for data cleaning and preprocessing.
+
+4.It finds missing values,outliers,and the importance of features for analysis.
+
+5.EDA uses descriptive statistics and visualization techniques to explore data.
+
+•In EDA, the first step is to read the dataset. We can read the dataset using pandas.
+•After reading the data, we can explore the data.
+•This initial exploration will help us understand the data and gain some domain insights.
+
+# import pandas
+import pandas as pd
+
+# Read the data using csv
+data=pd.read_csv('employee.csv’)
+
+# See initial 5 records
+data.head()
+
+# See last 5 records
+data.tail()
+
+# Print list of columns in the data
+print(data.columns)
+
+Output:
+Index(['name', 'age', 'income', 'gender', 'department', 'grade’, 'performance_score'], dtype='object')
+
+# Print the shape of a DataFrame
+print(data.shape)
+
+Output:
+(9, 7)
+
+# Check the information of DataFrame
+data.info()
+
+# Check the descriptive statistics
+data.describe()
+
+
+==========================================================================================
+
+LQ7. What is data cleaning? Discuss the various techniques used to clean raw data
+
+Data Cleaning
+•Data analysts and scientists spend most of their time cleaning data and pre-processing messy datasets.
+•Data cleaning and preprocessing is the process of identifying, updating, and removing corrupt or incorrect data.
+•Cleaning and pre-processing results in high-quality data for robust and error-free analysis.
+•Quality data can beat complex algorithms and outperform simple and less complex algorithms. In this context,high quality means accurate,complete,and 
+consistent data.
+•Data cleaning is a set of activities such as handling missing values, removing outliers, feature encoding, scaling, transformation,and splitting.
+
+
+Handling missing values:
+------------------------
+•Missing values are the values that are absent from the data. Absent values can occur due to human error, privacy concerns, 
+or the value not being filled in by the respondent filling in the survey. 
+This is the most common problem in data science and the first step of data preprocessing.
+•Missing values affect a machine learning model's performance.
+•Missing values can be handled in the following ways:
+1.Drop the missing value records.
+2.Fill in the missing value manually.
+3.Fill in the missing values using the measures of central tendency, such as mean, median, and mode. 
+The mean is used to impute the numeric feature, the median is used to impute the ordinal feature, and 
+the mode or highest occurring value is used to impute the categorical feature.
+4.Fill in the most probable value using machine learning models such as regression, decision trees, KNNs.
+•It is important to understand that in some cases, missing values will not impact the data.
+•For example, driving license numbers, social security numbers, or any other unique identification numbers will not impact the machine learning models
+ because they can't be used as features in the model.
+
+
+Dropping missing values:
+------------------------
+•In Python, missing values can be dropped using the dropna() function. dropna takes one argument: how.
+•how can take two values: all or any. any drops certain rows that contain NAN or missing values, while all drops all the rows contains NAN or missing values:
+# Drop missing value rows using dropna() function
+# Read the data
+data=pd.read_csv('employee.csv')
+data=data.dropna()
+data
+
+Filling in a missing value:
+---------------------------
+•In Python, missing values can be dropped using the fillna() function. The fillna() function takes one value that we want to fill at the missing place.
+ We can fill in the missing values using the mean, median, and mode:
+# Read the data
+data=pd.read_csv('employee.csv')
+# Fill all the missing values in the age column with mean of the age column
+data['age']=data.age.fillna(data.age.mean())
+data
+
+•how to fill in the missing values using the median:
+# Fill all the missing values in the income column with a median of the income column
+data['income']=data.income.fillna(data.income.median())
+data
+
+•how to fill in missing values using the mode:
+# Fill all the missing values in the gender column(category column) with the mode of the gender column
+data['gender']=data['gender'].fillna(data['gender'].mode()[0])
+data
+
+===================================================================================================================
+
+LQ.11 11.	Discuss the evaluation metrics used to assess the performance of Regression models
+
+Evaluating regression model performance
+• Model evaluation is one of the key aspects of any machine learning model  building process. 
+• It helps us to assess how our model will perform when we put it into  production.
+
+We will use the following metrics for model evaluation:
+• R-squared
+• MSE
+• MAE
+• RMSE
+
+
+
+==================================================================
+
+
+LQ8. Describe the DBSCAN Clustering algorithm. How is it different from K-Means ?
+ 
+DBSCAN (Density-Based Spatial Clustering of Applications with Noise) is a clustering algorithm that groups points that are closely packed together while marking points in low-density regions as outliers. It is based on the concept of density reachability and density connectivity.
+### Key Features of DBSCAN:
+1. **Density-Based Clustering**: Clusters are formed based on the density of data points in a region.
+2. **No Predefined Number of Clusters**: Unlike K-Means, DBSCAN does not require the number of clusters to be specified beforehand.
+3. **Handles Noise**: DBSCAN can identify and label outliers as noise.
+4. **Non-Spherical Clusters**: It can detect clusters of arbitrary shapes.
+### Parameters:
+- **eps (ε)**: The maximum distance between two points to be considered neighbors.
+- **minPts**: The minimum number of points required to form a dense region (core point).
+### How DBSCAN Works:
+1. Classify points as core points, border points, or noise based on `eps` and `minPts`.
+2. Connect core points within `eps` distance to form clusters.
+3. Include border points that are within `eps` distance of a core point in the cluster.
+4. Mark points that are not reachable from any core point as noise.
+### Differences Between DBSCAN and K-Means:
+| Feature                | DBSCAN                              | K-eans                             |
+|------------------------|--------------------------------------|-------------------------------------|
+| **Cluster Shape**      | Arbitrary shapes                    | Spherical                          |
+| **Number of Clusters** | Determined automatically            | Predefined by the user             |
+| **Noise Handling**     | Identifies and labels noise         | Does not handle noise explicitly   |
+| **Scalability**        | Slower for large datasets           | Faster for large datasets          |
+| **Sensitivity**        | Sensitive to `eps` and `minPts`     | Sensitive to initial centroids     |
+DBSCAN is particularly useful for datasets with noise and clusters of varying shapes, while K-Means is better suited for well-separated, spherical clusters.
+ 
+ 
+ ==================================================================================================================================
+
+ 
+LQ9: Discuss different techniques for evaluating clustering performance. What are the internal and external evaluation metrics ?
+ 
+ 
+# Evaluating Clustering Performance
+Clustering performance can be evaluated using **internal** and **external** metrics. These techniques help assess the quality of clusters formed by a clustering algorithm.
+## Internal Evaluation Metrics
+Internal metrics evaluate clustering quality based on the data itself, without external labels. Common metrics include:
+1. **Silhouette Score**:
+   - Measures how similar an object is to its own cluster compared to other clusters.
+   - Ranges from -1 (poor clustering) to 1 (ideal clustering).
+2. **Dunn Index**:
+   - Ratio of the minimum inter-cluster distance to the maximum intra-cluster distance.
+   - Higher values indicate better clustering.
+3. **Davies-Bouldin Index**:
+   - Measures the average similarity ratio of each cluster with its most similar cluster.
+   - Lower values indicate better clustering.
+4. **Inertia (Sum of Squared Distances)**:
+   - Measures the compactness of clusters.
+   - Lower values indicate tighter clusters.
+## External Evaluation Metrics
+External metrics compare clustering results to ground truth labels. Common metrics include:
+1. **Adjusted Rand Index (ARI)**:
+   - Measures the similarity between the predicted and true cluster assignments.
+   - Adjusted for chance, ranges from -1 to 1.
+2. **Normalized Mutual Information (NMI)**:
+   - Measures the amount of information shared between predicted and true clusters.
+   - Ranges from 0 (no mutual information) to 1 (perfect match).
+3. **Fowlkes-Mallows Index**:
+   - Measures the geometric mean of precision and recall for clustering.
+   - Ranges from 0 to 1.
+4. **Purity**:
+   - Measures the extent to which each cluster contains data points from a single class.
+   - Higher values indicate better clustering.
+## Choosing Metrics
+- Use **internal metrics** when ground truth labels are unavailable.
+- Use **external metrics** when ground truth labels are available for validation.
+Each metric has its strengths and weaknesses, so it is often useful to evaluate clustering using multiple metrics.
+ 
+ 
+ 
+==================================================================================
+ 
+LQ10: What is Principal Component Analysis (PCA)? How is it used for dimensionally reduction ?
+ 
+ 
+# Principal Component Analysis (PCA)
+Principal Component Analysis (PCA) is a statistical technique used for dimensionality reduction while preserving as much variability in the data as possible. It transforms the original features into a new set of uncorrelated variables called **principal components**, ordered by the amount of variance they capture from the data.
+## How PCA Works
+1. **Standardize the Data**: Ensure all features have the same scale.
+2. **Compute Covariance Matrix**: Measure relationships between features.
+3. **Calculate Eigenvalues and Eigenvectors**: Identify the directions (principal components) that maximize variance.
+4. **Select Principal Components**: Choose the top components that explain the most variance.
+5. **Transform Data**: Project the original data onto the selected components.
+## PCA for Dimensionality Reduction
+- **Reduce Complexity**: By selecting fewer principal components, PCA reduces the number of dimensions while retaining most of the data's variability.
+- **Improve Efficiency**: Simplifies models, reduces computation time, and mitigates overfitting.
+- **Visualization**: Enables plotting high-dimensional data in 2D or 3D for better understanding.
+PCA is widely used in fields like machine learning, image processing, and bioinformatics for preprocessing and feature extraction.
+ 
+ 
